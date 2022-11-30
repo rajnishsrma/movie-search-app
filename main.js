@@ -1,10 +1,9 @@
 // Global declaration
 const API_KEY = "066649f7e3410e9a7f1149d6cf7fb28d";
 const IMGPATH = "https://image.tmdb.org/t/p/w1280/";
-const SEARCH_QUERY = "" ;
 
 const MOVIE_API_URL = "https://api.themoviedb.org/3/movie/popular?api_key="+API_KEY+"&page=1";
-const SEARCH_MOVIE_API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&query=${SEARCH_QUERY}`
+const SEARCH_MOVIE_API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&query=`
 
 // selected element
 let row = document.querySelector("#movie-box");
@@ -51,9 +50,12 @@ getMovies(MOVIE_API_URL);
 
 searchbar.addEventListener("keyup", (e)=>{
     console.log(e);
-    SEARCH_QUERY = e.target.value ;
-   // if(SEARCH_QUERY.length>=3){
-        getMovies(SEARCH_MOVIE_API_URL);
+    let searchMovieName = e.target.value ;
+   // if(searchMovieName.length>=3){
+        let API_URL = `${SEARCH_MOVIE_API_URL+searchMovieName}` ;
+        https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&query=pushpa
+        console.log("API_URL = ",API_URL);
+        getMovies(API_URL);
    // }
    
 })
